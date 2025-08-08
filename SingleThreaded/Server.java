@@ -1,7 +1,5 @@
-package SingleThreaded;
 
 import java.io.BufferedReader;
-import java.io.IOError;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -24,6 +22,10 @@ public class Server {
                         new java.io.InputStreamReader(acceptedConnection.getInputStream()));
                 toClient.println("Hello from the server!");
 
+                toClient.close();
+                fromClient.close();
+                acceptedConnection.close();
+
             } catch (IOException e) {
                 System.out.println("Error accepting connection: " + e.getMessage());
                 e.printStackTrace();
@@ -41,5 +43,7 @@ public class Server {
             e.printStackTrace();
         }
         System.out.println("Server is shutting down.");
+
     }
+
 }
